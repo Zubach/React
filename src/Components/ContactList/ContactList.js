@@ -2,12 +2,15 @@ import React,{Fragment} from 'react';
 import ContactListItem from '../ContactListItem/ContactListItem'
 import "./ContactList.css";
 
-const ContactList = ({List})=>{
+const ContactList = ({List,setFavorite})=>{
 
 
     const singleContact = List.map(item => {
         return (
-            <ContactListItem name={item.name} phone={item.phone} email={item.email} gender={item.gender} avatar={item.avatar} isFavorite={item.isFavorite} starClass={item.starClass}></ContactListItem> 
+            <ContactListItem 
+            key = {item.id}
+            setFavorite = {()=>setFavorite(item.id)}
+            name={item.name} phone={item.phone} email={item.email} gender={item.gender} avatar={item.avatar} isFavorite={item.isFavorite} starClass={item.starClass}></ContactListItem> 
         );
     });
 

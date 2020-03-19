@@ -13,6 +13,7 @@ class ContactListItem extends Component{
         starClass: this.props.starClass
 
     };
+   
 
     rndBtnClick(){
         const rand = Math.floor(Math.random() * Math.floor(99));
@@ -21,22 +22,7 @@ class ContactListItem extends Component{
         });
        
     }
-    setFavorite(){
-        
-        if(!this.state.isFavorite){
-            this.setState({
-                isFavorite: !this.state.isFavorite,
-                starClass: "fa fa-star"
-            });
-        }
-        else{
-            this.setState({
-                isFavorite: !this.state.isFavorite,
-                starClass: "fa fa-star-o"
-            });
-        }
-    }
-
+    
     
 
     render(){
@@ -48,12 +34,16 @@ class ContactListItem extends Component{
     return (
         <Fragment>
             <li className="list-item">
-                <img src={url} alt ="laps"></img>
-                <h2>{this.state.name}</h2>
-                <p>{this.state.phone}</p>
-                <p>{this.state.email}</p>
-                <span onClick={this.setFavorite.bind(this)}><i class={this.state.starClass}></i></span>
-                <button onClick={this.rndBtnClick.bind(this)}>Random image</button>
+                    <span onClick={this.props.setFavorite} className="star-span"><i className={this.props.starClass}></i></span>
+                <div>
+                    <img src={url} alt ="laps"></img>
+                </div>
+                <div className="info">
+                    <h2>{this.state.name}</h2>
+                    <p>{this.state.email}</p>
+                    <button onClick={this.rndBtnClick.bind(this)} className="btn btn-secondary">Random image</button>
+                </div>
+                    <div><p className="phone-number">{this.state.phone}</p></div>
             </li>
         </Fragment>
     )
